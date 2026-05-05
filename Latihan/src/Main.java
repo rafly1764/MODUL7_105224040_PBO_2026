@@ -1,20 +1,20 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 
-        ArrayList<PerangkatPintar> list = new ArrayList<>();
+        PerangkatPintar alat1 = new LampuPintar();
 
-        list.add(new LampuPintar());
-        list.add(new AcPintar());
+        /*alat1.aturKecerahan(75, "Putih"); 
+         ERROR: method tidak dikenali
 
-        for (PerangkatPintar p : list) {
-            p.aktifkan();
+         Walaupun objek aslinya LampuPintar, variabel alat1 bertipe PerangkatPintar.
+         Java hanya mengizinkan pemanggilan method yang ada di class PerangkatPintar.
+         Method aturKecerahan() hanya ada di LampuPintar, jadinya tidak bisa dipanggil langsung.
+        */
 
-            if (p instanceof AcPintar) {
-                AcPintar ac = (AcPintar) p;
-                ac.aturSuhu(20);
-            }
+        // Perbaikan dengan downcasting
+        if (alat1 instanceof LampuPintar) {
+            LampuPintar lampu = (LampuPintar) alat1;
+            lampu.aturKecerahan(75, "Putih");
         }
     }
 }
